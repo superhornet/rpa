@@ -1,0 +1,50 @@
+@use "_reset.scss";
+
+body {
+    background-color: black;
+    color: lightgray;
+
+    #output {
+        background-color: darkblue;
+        color: whitesmoke
+    }
+    
+    .start{
+        background-color: darkblue;
+        color: whitesmoke;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-top: 2rem;
+        margin-right: 2rem;
+    }
+
+    input#search, input#quicksearch {
+        background-color: #242652;
+        color: white;
+    }
+
+    button[type='submit'] {
+        background-color: #242652;
+        border-radius: 0 1rem 1rem 0;
+        border-color: white;
+        color: white;
+        &:disabled{
+            cursor:not-allowed;
+            background-color: red;
+        }
+    }
+
+    div{
+        .result{
+            border-bottom: 3px double darkslategray;
+            margin-bottom: 10px;
+            .resultIndex{
+                margin-right: 20px
+            }
+            .resultTitle{
+                margin: 0 10px;
+            }
+            
+        }
+    }
+}

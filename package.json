@@ -1,0 +1,79 @@
+{
+  "name": "rpa",
+  "version": "1.0.0",
+  "description": "Robotic Process Automation",
+  "main": "dist/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "typedoc --tsconfig tsconfig.server.json --plugin typedoc-plugin-rename-defaults --entryPoints src/main/ts/index.ts",
+    "clean": "node clean.js",
+    "copy-folder": "node copyFolder.js",
+    "lint": "eslint . --ext .ts",
+    "tsc:server": "node ./node_modules/typescript/bin/tsc -p tsconfig.server.json",
+    "tsc:client": "node ./node_modules/typescript/bin/tsc -p tsconfig.frontend.json",
+    "build": "npm-run-all clean lint tsc:server tsc:client",
+    "build:sass": "sass src/scss/:dist/public/css/ --no-source-map",
+    "packageFE": "node buildFrontend.js",
+    "dev:start": "npm-run-all clean lint tsc:server tsc:client copy-folder build:sass start",
+    "dev": "nodemon --watch src -e ts,scss,pug --exec npm run dev:start",
+    "package": "npm-run-all clean copy-html build:FE build:sass",
+    "start": "node .",
+    "wdio": "wdio run ./wdio.conf.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superhornet/rpa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/superhornet/rpa/issues"
+  },
+  "homepage": "https://github.com/superhornet/rpa#readme",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "@wdio/cli": "^9.27.1",
+    "@wdio/cucumber-framework": "^9.27.1",
+    "@wdio/local-runner": "^9.27.1",
+    "@wdio/spec-reporter": "^9.27.1",
+    "chromedriver": "^147.0.3",
+    "edgedriver": "^6.3.0",
+    "esbuild": "^0.28.0",
+    "eslint": "latest",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-wdio": "^9.27.1",
+    "expect-webdriverio": "^5.6.5",
+    "nodemon": "^3.1.14",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.8.3",
+    "sass": "^1.99.0",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-rename-defaults": "^0.7.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1",
+    "wdio-edgedriver-service": "latest",
+    "webdriverio": "^9.27.1"
+  },
+  "overrides": {
+    "@cucumber/cucumber": "^11.2.0",
+    "eslint": "latest",
+    "fast-xml-parser": "latest",
+    "mockery": "latest",
+    "tmp": "^0.2.3",
+    "uuid": "^14"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pug": "^3.0.4"
+  }
+}

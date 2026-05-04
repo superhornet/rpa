@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title}
+    link(rel="stylesheet", href="css/main.css")
+  body
+    .container
+      textarea#output(rows=8, cols=50)
+      br
+      button#railroad.start Railroads
+      button#locomotive.start Locomotives
+    .container
+      input#quicksearch(type="text", name="search" value='')
+      button#quicksearchsubmit(type="submit" disabled) Search
+    #results.container
+      .result
+        span.resultIndex 1
+          strong.resultTitle
+        div
+      .result
+        span.resultIndex 2
+          strong.resultTitle
+        div
+      .result
+        span.resultIndex 3
+          strong.resultTitle
+        div
+
+    footer
+      p Powered by Molybdenum and 💜
+      p &copy; #{new Date().getUTCFullYear()} Caleb King.
+
+  script(type="module", src="js/index.js")
+  script(type="module", src="js/quicksearch.js")
